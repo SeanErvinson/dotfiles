@@ -1,0 +1,30 @@
+[user]
+	name = Sean Ervinson
+	email = ervinsonong@gmail.com
+[core]
+	autocrlf = input
+	longpaths = true
+	whitespace = -trailing-space
+	editor = code --wait
+[alias]
+	co = checkout
+	p = push
+	done = push origin HEAD
+	st = status
+	ll = log --oneline
+	last = log -1 HEAD --stat
+	br = br
+	cm = commit -m
+	mm = merge origin main
+	unstage = reset HEAD --
+	undo = reset HEAD~1 --mixed
+[pull]
+	rebase = true
+[color "status"]
+	added = green bold
+	updated = yellow bold
+	untracked = red bold
+[color "branch"]
+	current = yellow bold
+	local = green
+	remote = cyan
