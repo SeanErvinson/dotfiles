@@ -54,5 +54,10 @@ zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 
 source ~/zsh/.aliases
 
+hs () {
+ curl https://httpstat.us/$1
+}
+
+
 path+=('/home/asean/.dotnet')
 export PATH
