@@ -20,6 +20,9 @@
 	undo = reset HEAD~1 --mixed
 [pull]
 	rebase = true
+[push]
+	autoSetupRemote = true
+	default = current
 [color "status"]
 	added = green bold
 	updated = yellow bold
@@ -28,3 +31,5 @@
 	current = yellow bold
 	local = green
 	remote = cyan
+[init]
+	defaultBranch = main
