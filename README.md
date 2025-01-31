@@ -8,6 +8,10 @@ sudo apt install stow
 
 ## Installation
 
+### Prerequisite
+
+- [fzf](https://github.com/junegunn/fzf)
+
 ```bash
 cd $HOME
 git clone git@github.com:SeanErvinson/dotfiles.git
