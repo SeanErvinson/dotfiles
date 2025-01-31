@@ -54,6 +54,8 @@ zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 
 source ~/zsh/.aliases
 
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 hs () {
  curl https://httpstat.us/$1
 }
