@@ -63,6 +63,9 @@ path+=("$HOME/.dotnet")
 path+=('/opt/rider/bin/rider')
 path+=("$HOME/flutter/bin")
 path+=("$HOME/.pub-cache/bin")
+path+=("$HOME/android-studio/bin")
+path+=("$HOME/.dotnet/tools")
+export ANDROID_HOME="$HOME/Android/Sdk"
 export PATH
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
