@@ -13,7 +13,7 @@
 	st = status
 	ll = log --oneline
 	last = log -1 HEAD --stat
-	br = br
+	br = branch --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) %(color:green)(%(committerdate:relative)) [%(authorname)]' --sort=-committerdate
 	cm = commit -m
 	mm = merge origin main
 	unstage = reset HEAD --
