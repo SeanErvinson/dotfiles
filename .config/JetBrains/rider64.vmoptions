@@ -1,0 +1,4 @@
+# custom JetBrains Rider VM options (expand/override 'bin/rider64.vmoptions')
+
+-Xmx8192m
+-Xms6144m
