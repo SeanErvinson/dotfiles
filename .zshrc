@@ -21,6 +21,7 @@ zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
 
+zinit snippet "${HOME}/zsh/autocomplete/_gh"
 
 # Load completions
 autoload -U compinit && compinit
@@ -55,14 +56,19 @@ zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 source ~/zsh/.aliases
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source <(fzf --zsh)
 
 hs () {
  curl https://httpstat.us/$1
 }
 
+mkcd () {
+  mkdir -p -- "$1" &&
+  cd -P -- "$1"
+}
 
 path+=("$HOME/.dotnet")
-path+=('/opt/rider/bin/rider')
+path+=('/opt/rider/bin')
 path+=("$HOME/android-studio/bin")
 path+=("$HOME/.dotnet/tools")
 export ANDROID_HOME="$HOME/Android/Sdk"
