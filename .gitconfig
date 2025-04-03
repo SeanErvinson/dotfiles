@@ -18,6 +18,9 @@
 	mm = merge origin main
 	unstage = reset HEAD --
 	undo = reset HEAD~1 --mixed
+	wta = worktree add
+	wtl = worktree list
+	wtr = worktree remove
 [pull]
 	rebase = true
 [push]
