@@ -67,10 +67,15 @@ mkcd () {
   cd -P -- "$1"
 }
 
+ghrc (){
+  gh repo create "$1" --remote origin --source . --private
+}
+
 path+=("$HOME/.dotnet")
 path+=('/opt/rider/bin')
-path+=("$HOME/android-studio/bin")
+path+=("/opt/android-studio/bin")
 path+=("$HOME/.dotnet/tools")
+export JAVA_HOME="/usr/lib/jvm/java-21-openjdk-amd64"
 export ANDROID_HOME="$HOME/Android/Sdk"
 export PATH
 
@@ -89,3 +94,6 @@ if [ -d "$FNM_PATH" ]; then
   eval "$(fnm env --use-on-cd --shell zsh)"
 fi
 # fnm end
+
+# Load Angular CLI autocompletion.
+source <(ng completion script)
