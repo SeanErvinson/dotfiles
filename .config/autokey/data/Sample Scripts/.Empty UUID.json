@@ -1,6 +1,6 @@
 {
     "type": "script",
-    "description": "Insert Date",
+    "description": "Empty UUID",
     "store": {},
     "modes": [
         1
@@ -11,7 +11,7 @@
     "showInTrayMenu": false,
     "abbreviation": {
         "abbreviations": [
-            "@now"
+            "@euuid"
         ],
         "backspace": true,
         "ignoreCase": false,

@@ -4,9 +4,9 @@
     "modes": [
         1
     ],
-    "usageCount": 1,
+    "usageCount": 5,
     "prompt": false,
-    "omitTrigger": false,
+    "omitTrigger": true,
     "matchCase": false,
     "showInTrayMenu": false,
     "abbreviation": {

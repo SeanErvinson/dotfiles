@@ -1,17 +1,17 @@
 {
     "type": "script",
-    "description": "Insert Date",
+    "description": "Random UUID",
     "store": {},
     "modes": [
         1
     ],
-    "usageCount": 1,
+    "usageCount": 0,
     "prompt": false,
     "omitTrigger": true,
     "showInTrayMenu": false,
     "abbreviation": {
         "abbreviations": [
-            "@now"
+            "@uuid"
         ],
         "backspace": true,
         "ignoreCase": false,

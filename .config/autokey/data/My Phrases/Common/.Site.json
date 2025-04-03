@@ -1,23 +1,23 @@
 {
-    "type": "script",
-    "description": "Insert Date",
-    "store": {},
+    "type": "phrase",
+    "description": "Site",
     "modes": [
         1
     ],
-    "usageCount": 1,
+    "usageCount": 0,
     "prompt": false,
     "omitTrigger": true,
+    "matchCase": false,
     "showInTrayMenu": false,
     "abbreviation": {
         "abbreviations": [
-            "@now"
+            "`my"
         ],
         "backspace": true,
         "ignoreCase": false,
         "immediate": false,
         "triggerInside": false,
-        "wordChars": "[^ \\n]"
+        "wordChars": "[\\w]"
     },
     "hotkey": {
         "modifiers": [],
@@ -26,5 +26,6 @@
     "filter": {
         "regex": null,
         "isRecursive": false
-    }
+    },
+    "sendMode": "kb"
 }

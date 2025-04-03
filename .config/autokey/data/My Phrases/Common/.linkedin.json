@@ -1,17 +1,17 @@
 {
-    "type": "script",
-    "description": "Insert Date",
-    "store": {},
+    "type": "phrase",
+    "description": "linkedin",
     "modes": [
         1
     ],
     "usageCount": 1,
     "prompt": false,
     "omitTrigger": true,
+    "matchCase": false,
     "showInTrayMenu": false,
     "abbreviation": {
         "abbreviations": [
-            "@now"
+            "`linkedin"
         ],
         "backspace": true,
         "ignoreCase": false,
@@ -26,5 +26,6 @@
     "filter": {
         "regex": null,
         "isRecursive": false
-    }
+    },
+    "sendMode": "kb"
 }
