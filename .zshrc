@@ -1,10 +1,3 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 # Setting zinit home path
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
@@ -14,9 +7,14 @@ if [ ! -d "$ZINIT_HOME" ]; then
    git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 fi
 
+# Oh My Posh
+eval "$(oh-my-posh init zsh --config ${HOME}/oh-my-posh/config.omp.yaml)"
+# Zoxide
+eval "$(zoxide init zsh --cmd cd)"
+
+
 source "${ZINIT_HOME}/zinit.zsh"
 
-zinit ice depth=1; zinit light romkatv/powerlevel10k
 zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
@@ -25,9 +23,6 @@ zinit snippet "${HOME}/zsh/autocomplete/_gh"
 
 # Load completions
 autoload -U compinit && compinit
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 
 # Keybindings
@@ -73,10 +68,13 @@ ghrc (){
 
 path+=("$HOME/.dotnet")
 path+=('/opt/rider/bin')
+path+=('/opt/android-studio/bin')
 path+=("/opt/android-studio/bin")
 path+=("$HOME/.dotnet/tools")
 export JAVA_HOME="/usr/lib/jvm/java-21-openjdk-amd64"
 export ANDROID_HOME="$HOME/Android/Sdk"
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/platform-tools
 export PATH
 
 # pnpm
@@ -86,6 +84,7 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
 
 # fnm
 FNM_PATH="$HOME/.local/share/fnm"
@@ -97,3 +96,13 @@ fi
 
 # Load Angular CLI autocompletion.
 source <(ng completion script)
+
+# bun completions
+[ -s "/$HOME/.bun/_bun" ] && source "/$HOME/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# direnv
+eval "$(direnv hook zsh)"
