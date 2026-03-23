@@ -11,9 +11,12 @@ fi
 eval "$(oh-my-posh init zsh --config ${HOME}/oh-my-posh/config.omp.yaml)"
 # Zoxide
 eval "$(zoxide init zsh --cmd cd)"
+# dotnet
+#eval "$(dotnet completions script zsh)"
 
 
 source "${ZINIT_HOME}/zinit.zsh"
+fpath+=("$HOME/zsh/completion")
 
 zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
@@ -69,13 +72,16 @@ ghrc (){
 path+=("$HOME/.dotnet")
 path+=('/opt/rider/bin')
 path+=('/opt/android-studio/bin')
-path+=("/opt/android-studio/bin")
 path+=("$HOME/.dotnet/tools")
+path+=("$HOME/.pulumi/bin")
 export JAVA_HOME="/usr/lib/jvm/java-21-openjdk-amd64"
 export ANDROID_HOME="$HOME/Android/Sdk"
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 export PATH
+
+#dotnet
+DOTNET_ROOT="/usr/bin/dotnet"
 
 # pnpm
 export PNPM_HOME="$HOME/.local/share/pnpm"
@@ -84,7 +90,6 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
-
 
 # fnm
 FNM_PATH="$HOME/.local/share/fnm"
@@ -106,3 +111,4 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 # direnv
 eval "$(direnv hook zsh)"
+fpath+=~/.zfunc; autoload -Uz compinit; compinit

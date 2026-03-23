@@ -7,4 +7,6 @@ alias la='ls -A'
 alias l='ls -CF'
 alias k='kubectl'
 alias kns='kubens'
-alias kctx="kubectx"
+alias kctx='kubectx'
+alias cc='claude --dangerously-skip-permissions --model opus --permission-mode plan'
+alias ccd='claude --dangerously-skip-permissions --model opus --permission-mode plan'
