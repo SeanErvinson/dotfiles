@@ -9,8 +9,6 @@ fi
 
 # Oh My Posh
 eval "$(oh-my-posh init zsh --config ${HOME}/oh-my-posh/config.omp.yaml)"
-# Zoxide
-eval "$(zoxide init zsh --cmd cd)"
 # dotnet
 #eval "$(dotnet completions script zsh)"
 
@@ -112,3 +110,6 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 # direnv
 eval "$(direnv hook zsh)"
 fpath+=~/.zfunc; autoload -Uz compinit; compinit
+
+export _ZO_DOCTOR=0
+eval "$(zoxide init zsh --cmd cd)"

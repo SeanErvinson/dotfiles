@@ -116,6 +116,10 @@
 		],
 		"defaultMode": "plan"
 	},
+	"fileSuggestion": {
+		"type": "command",
+		"command": "~/.claude/file-suggestion.sh"
+	},
 	"hooks": {
 		"PreToolUse": [
 			{
@@ -152,5 +156,11 @@
 			}
 		}
 	},
-	"skipDangerousModePermissionPrompt": true
+	"disableAutoMode": "disable",
+	"feedbackSurveyRate": 0,
+	"skipDangerousModePermissionPrompt": true,
+	"env": {
+		"CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1",
+		"CLAUDE_CODE_NEW_INIT": "1"
+	}
 }
