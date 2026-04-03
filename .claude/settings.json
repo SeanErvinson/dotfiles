@@ -1,4 +1,12 @@
 {
+	"fileSuggestion": {
+		"type": "command",
+		"command": "~/.claude/file-suggestion.sh"
+	},
+	"env": {
+		"CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1",
+		"CLAUDE_CODE_NEW_INIT": "1"
+	},
 	"permissions": {
 		"deny": [
 			"Bash(rm * ~)",
@@ -116,10 +124,6 @@
 		],
 		"defaultMode": "plan"
 	},
-	"fileSuggestion": {
-		"type": "command",
-		"command": "~/.claude/file-suggestion.sh"
-	},
 	"hooks": {
 		"PreToolUse": [
 			{
@@ -156,11 +160,8 @@
 			}
 		}
 	},
-	"disableAutoMode": "disable",
 	"feedbackSurveyRate": 0,
 	"skipDangerousModePermissionPrompt": true,
-	"env": {
-		"CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1",
-		"CLAUDE_CODE_NEW_INIT": "1"
-	}
+	"disableAutoMode": "disable",
+	"voiceEnabled": true
 }
