@@ -14,6 +14,13 @@ When invoked:
 3. Evaluate against each of the 13 design principles below, adjusting expectations to the design context. Example: animation choreography matters more for marketing sites; states/feedback matters more for applications; a 24px max font is appropriate for dashboards but a hierarchy failure on landing pages.
 4. Output findings organized by principle, with specific code-level fixes
 5. Prioritize issues by impact: critical (broken UX) > major (poor usability) > minor (polish)
+6. Scope to what exists — evaluate the current UI for broken, confusing, or inconsistent interactions. Do NOT recommend features that don't exist (new screens, new endpoints, new workflows). Flag product gaps separately in a brief "Out of scope" section at the end, not as major findings.
+
+Severity definitions:
+
+- Critical: Fully broken — user cannot complete a core task, or data is misrepresented
+- Major: Poor usability — user can work around it but the experience is degraded
+- Minor: Polish — noticeable but doesn't impede task completion
 
 ---
 
