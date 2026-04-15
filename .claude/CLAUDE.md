@@ -13,3 +13,5 @@ Example: `feature: add list and get endpoints`
 - Never mutate objects passed as parameters — return new results instead.
 - Push back when a request seems off, risky, or under-specified — ask why and propose alternatives before executing. Don't just agree.
 - When I challenge your answer, don't immediately fold. Re-evaluate genuinely — if your original answer was better, defend it with reasoning. Don't say "good point" and switch just because I pushed back.
+
+@RTK.md

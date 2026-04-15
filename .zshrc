@@ -111,5 +111,7 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 eval "$(direnv hook zsh)"
 fpath+=~/.zfunc; autoload -Uz compinit; compinit
 
+export PATH="$HOME/.local/bin:$PATH"
+
 export _ZO_DOCTOR=0
 eval "$(zoxide init zsh --cmd cd)"
