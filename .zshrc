@@ -113,5 +113,8 @@ fpath+=~/.zfunc; autoload -Uz compinit; compinit
 
 export PATH="$HOME/.local/bin:$PATH"
 
+# podman socket (for tools that expect docker.sock)
+export DOCKER_HOST="unix://${XDG_RUNTIME_DIR}/podman/podman.sock"
+
 export _ZO_DOCTOR=0
 eval "$(zoxide init zsh --cmd cd)"

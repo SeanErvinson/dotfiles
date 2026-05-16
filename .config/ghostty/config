@@ -45,3 +45,4 @@
 theme = "Rapture"
 
 keybind = ctrl+shift+r=reload_config
+keybind = ctrl+shift+w=close_surface

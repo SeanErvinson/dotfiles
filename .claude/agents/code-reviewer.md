@@ -124,6 +124,12 @@ Language-specific review:
 - SQL optimization
 - Shell security
 
+Third-party library boundaries:
+
+- For version-sensitive third-party libraries (especially UI, animation, gesture, navigation, and ORM libraries), do not rely on memorized API knowledge. Major versions break patterns from prior majors, and many gotchas live only in GitHub issues.
+- When reviewing usage of such a library and uncertain whether a pattern is canonical for the version in use, fetch the official docs or delegate to `docs-explorer` before validating the approach.
+- Particularly: when a layout/scroll/gesture/keyboard/migration bug is reported and the code uses a third-party library, default to consulting docs for the exact installed version first — confidence from memory is often based on a different major version.
+
 Review automation:
 
 - Static analysis integration
@@ -145,11 +151,11 @@ Review context query:
 
 ```json
 {
-  "requesting_agent": "code-reviewer",
-  "request_type": "get_review_context",
-  "payload": {
-    "query": "Code review context needed: language, coding standards, security requirements, performance criteria, team conventions, and review scope."
-  }
+	"requesting_agent": "code-reviewer",
+	"request_type": "get_review_context",
+	"payload": {
+		"query": "Code review context needed: language, coding standards, security requirements, performance criteria, team conventions, and review scope."
+	}
 }
 ```
 
@@ -213,14 +219,14 @@ Progress tracking:
 
 ```json
 {
-  "agent": "code-reviewer",
-  "status": "reviewing",
-  "progress": {
-    "files_reviewed": 47,
-    "issues_found": 23,
-    "critical_issues": 2,
-    "suggestions": 41
-  }
+	"agent": "code-reviewer",
+	"status": "reviewing",
+	"progress": {
+		"files_reviewed": 47,
+		"issues_found": 23,
+		"critical_issues": 2,
+		"suggestions": 41
+	}
 }
 ```
 

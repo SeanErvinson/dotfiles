@@ -1,53 +1,55 @@
 {
-	"fileSuggestion": {
-		"type": "command",
-		"command": "~/.claude/file-suggestion.sh"
-	},
-	"env": {
-		"CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1",
-		"CLAUDE_CODE_NEW_INIT": "1"
-	},
-	"permissions": {
-		"defaultMode": "plan"
-	},
-	"hooks": {
-		"PreToolUse": [
-			{
-				"matcher": "Edit|Write",
-				"hooks": [
-					{
-						"type": "command",
-						"command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/protect-files.sh"
-					}
-				]
-			}
-		],
-		"PostToolUse": [
-			{
-				"matcher": "Edit|Write",
-				"hooks": [
-					{
-						"type": "command",
-						"command": "jq -r '.tool_input.file_path' | xargs pnpx prettier --write"
-					}
-				]
-			}
-		]
-	},
-	"statusLine": {
-		"type": "command",
-		"command": "jq -r '\"[\\(.model.display_name)] \\(.context_window.used_percentage // 0)% context\"'"
-	},
-	"extraKnownMarketplaces": {
-		"expo-plugins": {
-			"source": {
-				"source": "github",
-				"repo": "expo/skills"
-			}
-		}
-	},
-	"feedbackSurveyRate": 0,
-	"skipDangerousModePermissionPrompt": true,
-	"disableAutoMode": "disable",
-	"voiceEnabled": true
+  "fileSuggestion": {
+    "type": "command",
+    "command": "~/.claude/file-suggestion.sh"
+  },
+  "env": {
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1",
+    "CLAUDE_CODE_NEW_INIT": "1"
+  },
+  "permissions": {
+    "defaultMode": "plan"
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/protect-files.sh"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jq -r '.tool_input.file_path' | xargs pnpx prettier --write"
+          }
+        ]
+      }
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "jq -r '\"[\\(.model.display_name)] \\(.context_window.used_percentage // 0)% context\"'"
+  },
+  "extraKnownMarketplaces": {
+    "expo-plugins": {
+      "source": {
+        "source": "github",
+        "repo": "expo/skills"
+      }
+    }
+  },
+  "feedbackSurveyRate": 0,
+  "effortLevel": "high",
+  "skipDangerousModePermissionPrompt": true,
+  "disableAutoMode": "disable",
+  "voiceEnabled": true,
+  "teammateMode": "auto"
 }
