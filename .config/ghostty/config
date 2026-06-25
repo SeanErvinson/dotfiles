@@ -43,6 +43,6 @@
 # resize-overlay-duration = 4s 200ms
 
 theme = "Rapture"
-
+shell-integration-features = ssh-env, ssh-terminfo
 keybind = ctrl+shift+r=reload_config
 keybind = ctrl+shift+w=close_surface
