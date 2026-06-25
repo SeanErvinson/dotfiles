@@ -130,6 +130,16 @@ Third-party library boundaries:
 - When reviewing usage of such a library and uncertain whether a pattern is canonical for the version in use, fetch the official docs or delegate to `docs-explorer` before validating the approach.
 - Particularly: when a layout/scroll/gesture/keyboard/migration bug is reported and the code uses a third-party library, default to consulting docs for the exact installed version first — confidence from memory is often based on a different major version.
 
+Deep scan — trace effects beyond the diff:
+
+Localized, line-by-line review misses the bugs that matter most: ones visible only when you model the whole unit and how a change ripples outward. Before signing off on a change — especially one touching stateful or async code — go deeper than the changed lines and advise the engineer (or requesting agent) on the effect before it lands.
+
+- **Model the unit, not the hunk.** Read the whole function/class/module being changed. Map its long-lived state and resources — promises (and their resolve/reject handles), timers/intervals, listeners/subscriptions, connections, locks, caches, refs — and for each, where it is created, where released/resolved, and where it can leak, double-settle, or get stuck.
+- **Trace changed symbols to their call sites.** For any change to a public symbol or to the _meaning_ of a value (return shape, nullability, a flag's semantics, an added/removed enum case), grep for callers and consumers across the repo and check whether the change breaks an assumption they rely on. The blast radius rarely ends at the diff.
+- **Reason about failure and timing.** For each change ask: what if it fails partway through? what if events or callbacks interleave? called twice or re-entered? operating on partial or stale state? a retry racing an external event? Carry a concrete trigger scenario for anything you flag.
+- **Async/concurrency invariants.** Promises settle exactly once on every path; no abandoned pending promises; cached/shared promises never returned stale-unresolved. Timers/handles cleared on every exit path; re-scheduling never early-returns and strands an existing timer; cleanup on teardown. State guards honored by every path that can override them.
+- For external API/SDK/library behavior, verify against the installed version's docs per "Third-party library boundaries" above rather than memory.
+
 Review automation:
 
 - Static analysis integration
