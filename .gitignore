@@ -1,0 +1,11 @@
+.claude/*
+!.claude/CLAUDE.md
+!.claude/RTK.md
+!.claude/settings.json
+!.claude/file-suggestion.sh
+!.claude/agents/
+!.claude/hooks/
+!.claude/skills/
+
+.config/JetBrains/*
+!.config/JetBrains/rider64.vmoptions
