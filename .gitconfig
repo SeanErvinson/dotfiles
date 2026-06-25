@@ -6,6 +6,7 @@
 	longpaths = true
 	whitespace = -trailing-space
 	editor = code --wait
+	fileMode = false
 [alias]
 	co = checkout
 	p = push
@@ -21,6 +22,9 @@
 	wta = worktree add
 	wtl = worktree list
 	wtr = worktree remove
+	pod = pull origin develop
+	poc = !git pull origin \"$(git branch --show-current)\"
+	fdone = push --force-with-lease
 [pull]
 	rebase = true
 [push]

@@ -9,7 +9,7 @@ alias k='kubectl'
 alias kns='kubens'
 alias kctx='kubectx'
 alias cc='claude --dangerously-skip-permissions --model opus --permission-mode plan'
-alias ccd='claude --dangerously-skip-permissions --model opus --permission-mode plan'
+alias ccd='claude --allow-dangerously-skip-permissions --model opus --permission-mode plan --effort xhigh'
 
 # podman
 alias docker='podman'

@@ -22,7 +22,7 @@ zinit light zsh-users/zsh-autosuggestions
 
 zinit snippet "${HOME}/zsh/autocomplete/_gh"
 
-# Load completions
+# Load completion
 autoload -U compinit && compinit
 
 
@@ -81,6 +81,9 @@ export PATH
 #dotnet
 DOTNET_ROOT="/usr/bin/dotnet"
 
+#AIWorld
+AIWORLD_PATH="$HOME/Development/AIWorld"
+
 # pnpm
 export PNPM_HOME="$HOME/.local/share/pnpm"
 case ":$PATH:" in
@@ -97,8 +100,6 @@ if [ -d "$FNM_PATH" ]; then
 fi
 # fnm end
 
-# Load Angular CLI autocompletion.
-source <(ng completion script)
 
 # bun completions
 [ -s "/$HOME/.bun/_bun" ] && source "/$HOME/.bun/_bun"
