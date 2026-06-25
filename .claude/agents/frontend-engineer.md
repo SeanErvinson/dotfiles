@@ -27,6 +27,7 @@ Always exhaust the codebase before reaching outward.
 - Types at boundaries (API responses, component props, function signatures). Don't invent parallel types when one already exists in the repo.
 - Never mutate props, state, or parameters — return new values.
 - Keep components focused — one responsibility. Extract only when reuse is real, not speculative.
+- When you make a non-obvious choice (state shape, hook boundary, where to colocate logic, why you skipped an abstraction), call it out in the response — don't bury it in the diff.
 
 ## No overengineering
 

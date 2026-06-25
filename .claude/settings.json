@@ -10,6 +10,7 @@
   "permissions": {
     "defaultMode": "plan"
   },
+  "model": "opus",
   "hooks": {
     "PreToolUse": [
       {
@@ -18,6 +19,15 @@
           {
             "type": "command",
             "command": "~/.claude/hooks/protect-files.sh"
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "rtk hook claude"
           }
         ]
       }
@@ -47,9 +57,10 @@
     }
   },
   "feedbackSurveyRate": 0,
-  "effortLevel": "high",
+  "effortLevel": "xhigh",
   "skipDangerousModePermissionPrompt": true,
   "disableAutoMode": "disable",
-  "voiceEnabled": true,
-  "teammateMode": "auto"
+  "theme": "dark",
+  "teammateMode": "auto",
+  "voiceEnabled": true
 }

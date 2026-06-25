@@ -1,12 +1,18 @@
 ---
 name: retro
 description: Run a retrospective on the current session. Evaluates agent performance, captures feedback, proposes improvements to agent definitions, and tracks changes over time. Run "/retro" at the end of a session.
-tools: Read, Write, Edit, Glob, Grep, Agent
+tools: Read, Write, Edit, Glob, Grep, Agent, Bash
 ---
 
 # Session Retrospective
 
 Goal: evaluate how agents performed this session, capture useful signal, and produce concrete improvements to agent definitions. This is an **interactive** process — the user is the mediator.
+
+## Setup precondition
+
+The skill requires an `AIWORLD_PATH` environment variable pointing to the local AIWorld repo (e.g., `/home/asean/Development/AIWorld` on Linux/macOS, `C:/Users/<user>/Development/AIWorld` on Windows). Check it first with `echo "$AIWORLD_PATH"` — if empty, stop immediately and tell the user how to set it for their shell. Do not fall back to a hardcoded path.
+
+All `git` operations in this skill use `git -C "$AIWORLD_PATH" ...` so they work identically across Linux, macOS, and Windows shells without `cd` or `&&` chaining.
 
 ## Rules
 
@@ -21,6 +27,14 @@ Goal: evaluate how agents performed this session, capture useful signal, and pro
 
 ## Steps
 
+### 0. Sync Latest Retros
+
+Pull the latest from the shared retro repo so cross-machine learnings are loaded before you read context.
+
+Run: `git -C "$AIWORLD_PATH" pull --rebase`
+
+If the pull fails (conflict, network, no remote), stop and tell the user — don't proceed with stale context. They can resolve and re-run `/retro`.
+
 ### 1. Gather Context
 
 Identify which agents were used this session and what they did.
@@ -32,13 +46,13 @@ Identify which agents were used this session and what they did.
 
 **Load agent definitions:**
 
-- Read the current `.md` files from `/home/asean/dotfiles/.claude/agents/` for each agent that was used
+- Read the current `.md` files from `~/.claude/agents/` for each agent that was used
 
 **Load recent retros for trend context:**
 
-- Glob for recent files in `/home/asean/Development/AIWorld/retros/`
+- Glob for recent files in `$AIWORLD_PATH/retros/`
 - Read the last 3-5 retro records (if they exist) to understand recurring patterns
-- Check the relevant agent changelogs in `/home/asean/Development/AIWorld/changelog/`
+- Check the relevant agent changelogs in `$AIWORLD_PATH/changelog/`
 
 Present a brief summary of what you found:
 
@@ -71,7 +85,7 @@ If an agent was used for something trivial or worked perfectly, don't force eval
 ### 3. Write the Retro Record
 
 Based on the user's input, create a retro record at:
-`/home/asean/Development/AIWorld/retros/YYYY-MM-DD-<short-slug>.md`
+`$AIWORLD_PATH/retros/YYYY-MM-DD-<short-slug>.md`
 
 Where `<short-slug>` is 2-3 words describing the session (e.g., `auth-refactor`, `api-perf-tuning`).
 
@@ -134,12 +148,12 @@ For each change the user approves:
 
 **Edit the agent definition:**
 
-- Use the Edit tool to modify the agent's `.md` file at `/home/asean/dotfiles/.claude/agents/<agent>.md`
+- Use the Edit tool to modify the agent's `.md` file at `~/.claude/agents/<agent>.md`
 - Make surgical edits — don't rewrite the whole file
 
 **Append to the agent's changelog:**
 
-- File: `/home/asean/Development/AIWorld/changelog/<agent>.md`
+- File: `$AIWORLD_PATH/changelog/<agent>.md`
 - Create the file if it doesn't exist yet
 - Append an entry in this format:
 
@@ -151,12 +165,25 @@ For each change the user approves:
 - **Retro**: retros/YYYY-MM-DD-<slug>.md
 ```
 
+### 5b. Sync Retro to GitHub
+
+After writes complete, commit and push so the other machine sees this retro next time. Each command is its own invocation — no shell chaining, so this works across bash/zsh/Git Bash/PowerShell/cmd.
+
+1. `git -C "$AIWORLD_PATH" add retros/ changelog/ TEAM-HEALTH.md`
+2. `git -C "$AIWORLD_PATH" commit -m "retro: YYYY-MM-DD <slug>"`
+3. `git -C "$AIWORLD_PATH" push`
+
+If push is rejected (remote moved during the session), run `git -C "$AIWORLD_PATH" pull --rebase` and retry the push once. If it still fails, report the error and leave the commit local — the user resolves manually.
+
+Capture the pushed commit SHA from `git -C "$AIWORLD_PATH" rev-parse HEAD` to include in the wrap-up.
+
 ### 6. Wrap Up
 
 ```
 Retrospective complete.
 - Recorded: retros/YYYY-MM-DD-<slug>.md
 - Changes applied: N edits to M agent(s)
+- Synced: <commit-sha> pushed to origin
 
 Want to:
 A) Review the full retro record
